@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
-const connectDB = (url) => {
-    return mongoose
-    .connect(url)
-    .then(() => console.log('データベースと接続中・・・'))
-    .catch((err) => console.log(err));
+const connectDB = async (url) => {
+    try {
+        await mongoose
+            .connect(url);
+        return console.log('データベースと接続中・・・');
+    } catch (err) {
+        return console.log(err);
+    }
 }
 
 module.exports = connectDB;
